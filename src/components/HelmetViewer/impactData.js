@@ -1,0 +1,30 @@
+export const IMPACT_LEVELS = {
+  off: null,
+  green: {
+    color: '#00ffd1',
+    duration: 2847,
+    peakAccel: 6.12,
+    peakGyro: 3.88,
+    severity: 14.8,
+    status: 'NOT TOO SEVERE',
+    headline: 'LOW IMPACT',
+  },
+  yellow: {
+    color: '#f5c542',
+    duration: 4120,
+    peakAccel: 14.55,
+    peakGyro: 9.21,
+    severity: 48.6,
+    status: 'MONITOR & EVALUATE',
+    headline: 'MODERATE IMPACT',
+  },
+  red: {
+    color: '#ff4d5a',
+    duration: 5231,
+    peakAccel: 22.4,
+    peakGyro: 15.67,
+    severity: 86.3,
+    status: 'TAKE ACTION',
+    headline: 'HIGH IMPACT',
+  },
+};
