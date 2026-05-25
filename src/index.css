@@ -63,3 +63,12 @@ body {
   margin: 0;
   color: var(--text-muted);
 }
+
+.logo {
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}

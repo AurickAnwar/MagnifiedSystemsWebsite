@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HelmetViewer from './components/HelmetViewer/HelmetViewer';
+import HomeTechCards from './components/HomeTechCards/HomeTechCards';
 import './Home.css';
 
 const Home = () => {
@@ -34,6 +35,7 @@ const Home = () => {
             <HelmetViewer />
           </div>
         </div>
+        <HomeTechCards />
       </div>
       <footer className="home-footer container">
         <p>Copyright © 2026 Magnified Systems All rights reserved.</p>

@@ -1,0 +1,322 @@
+/* ——— Outside of Engineering — cinematic life page ——— */
+
+.life-page {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+    z-index: 1;
+    overflow-x: clip;
+  }
+  
+  /* Film grain */
+  .life-grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.055;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  
+  .life-glow {
+    pointer-events: none;
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: 0;
+  }
+  
+  .life-glow--a {
+    width: min(55vw, 420px);
+    height: min(55vw, 420px);
+    top: -8%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(181, 122, 16, 0.35) 0%, transparent 70%);
+  }
+  
+  .life-glow--b {
+    width: min(50vw, 380px);
+    height: min(50vw, 380px);
+    bottom: 5%;
+    right: -12%;
+    background: radial-gradient(circle, rgba(213, 166, 60, 0.22) 0%, transparent 72%);
+  }
+  
+  .life-particles {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .life-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(240, 206, 112, 0.85);
+    box-shadow: 0 0 14px rgba(181, 122, 16, 0.55), 0 0 28px rgba(181, 122, 16, 0.2);
+    animation: lifeParticleDrift 16s ease-in-out infinite;
+    opacity: 0.35;
+  }
+  
+  @keyframes lifeParticleDrift {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      opacity: 0.75;
+      transform: translate(12px, -32px) scale(1.2);
+    }
+  }
+  
+  /* Hero */
+  .life-hero {
+    padding: 7.5rem 0 1.35rem;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .life-hero-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d5a63c;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .life-hero-title {
+    font-size: clamp(2.15rem, 5.5vw, 3.35rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.12;
+    color: #f4f1ea;
+    margin-bottom: 1.1rem;
+    text-shadow: 0 0 40px rgba(181, 122, 16, 0.12);
+  }
+  
+  .life-hero-lede {
+    max-width: 36rem;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #a8adb8;
+  }
+  
+  /* Sections shared — tighter vertical rhythm */
+  .life-section {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem 0 3rem;
+  }
+  
+  /* First section after hero: pull Friends closer to intro */
+  .life-hero + .life-section {
+    padding-top: 0.85rem;
+  }
+  
+  /* Friends → Vacations */
+  #friends.life-section {
+    padding-bottom: 1.25rem;
+  }
+  
+  .life-section--vacations {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+  
+  #sports.life-section {
+    padding-top: 1.25rem;
+  }
+  
+  .life-section-head {
+    margin-bottom: 1.35rem;
+    max-width: none;
+  }
+  
+  .life-section-title {
+    font-size: clamp(1.65rem, 3.5vw, 2.15rem);
+    font-weight: 700;
+    color: #f0ebe3;
+    margin-bottom: 0.65rem;
+    letter-spacing: 0.03em;
+  }
+  
+  .life-section-sub {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #8b919c;
+    max-width: 40rem;
+  }
+  
+  /* ——— Friends: polaroid masonry ——— */
+  /* Row-major grid: order in DOM = left → right, then next row (NOT multi-column masonry) */
+  .life-friends-masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.35rem;
+    align-items: stretch;
+  }
+  
+  @media (max-width: 960px) {
+    .life-friends-masonry {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 560px) {
+    .life-friends-masonry {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .life-polaroid {
+    display: flex;
+    height: 100%;
+    margin-bottom: 0;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+  }
+
+  .life-polaroid:hover {
+    transform: translateY(-6px);
+    z-index: 3;
+  }
+  
+  .life-polaroid-inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    border-radius: 4px 4px 3px 3px;
+    padding: 0.65rem 0.65rem 1rem;
+    background: linear-gradient(165deg, #f5f0e8 0%, #e8e2d8 48%, #dcd5c9 100%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    transition: box-shadow 0.45s ease, transform 0.45s ease;
+  }
+  
+  .life-polaroid:hover .life-polaroid-inner {
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(181, 122, 16, 0.35),
+      0 0 48px rgba(181, 122, 16, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  
+  .life-polaroid-photo {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+    /* Landscape wide rectangle (width > height) — matches typical camera / night-out shots */
+    aspect-ratio: 4 / 3;
+    background: #1a1a1a;
+  }
+  
+  .life-polaroid-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform-origin: center center;
+    display: block;
+    transform: scale(1);
+    filter: saturate(0.92) contrast(1.02);
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  
+  .life-polaroid:hover .life-polaroid-photo img {
+    transform: scale(1.06);
+    filter: saturate(1) contrast(1.04);
+  }
+  
+  .life-section--team {
+    padding-top: 7.5rem;
+  }
+
+  .life-polaroid-meta {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 0.85rem;
+    padding: 0 0.15rem;
+    text-align: left;
+    min-height: 5.5rem;
+  }
+
+  .life-polaroid-meta-top {
+    flex-shrink: 0;
+  }
+
+  .life-polaroid-meta-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.65rem;
+  }
+
+  .life-polaroid-name {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #8a5a0a;
+  }
+
+  .life-polaroid-role {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #b57a10;
+    letter-spacing: 0.02em;
+  }
+
+  .life-polaroid-school {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 0.74rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #5c5348;
+  }
+
+  .life-polaroid-social {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    align-self: flex-end;
+    gap: 0.4rem;
+  }
+
+  .life-polaroid-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    opacity: 0.88;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .life-polaroid-social a:hover {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  .life-polaroid-social img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+  
+
+
+  
+  

@@ -14,7 +14,7 @@ const navItems = [
 
   { to: '/Progress', label: 'Progress' },
 
-  { to: '/meet-the-team', label: 'Meet the Team' },
+  { to: '/meet-the-team', label: 'Our Team' },
 
 ];
 
